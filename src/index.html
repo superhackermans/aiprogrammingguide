@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zero to Hero — Programming to Multi-Agent Claude Code</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/design-system.css">
+</head>
+<body>
+
+<!-- SVG Arrow Defs -->
+<svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0"><defs>
+<marker id="arrowhead" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6" fill="var(--accent)"/></marker>
+<marker id="arrowhead-muted" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6" fill="var(--a5)"/></marker>
+</defs></svg>
+
+<button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+<div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+<button class="toggle" id="themeToggle" aria-label="Toggle theme">
+<svg class="is" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+<svg class="im" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+</button>
+
+<!-- SIDEBAR — identical across all files -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-logo"><span>Zero to Hero</span>Programming &rarr; Multi-Agent AI</div>
+  <div class="toc-group">
+    <div class="toc-group-title">Foundations</div>
+    <a href="phase-1.html#ch01" class="toc-link"><span class="toc-num">01</span>What Programming Actually Is</a>
+    <a href="phase-1.html#ch02" class="toc-link"><span class="toc-num">02</span>How Computers Execute Code</a>
+    <a href="phase-1.html#ch03" class="toc-link"><span class="toc-num">03</span>Setting Up Your Environment</a>
+    <a href="phase-1.html#ch04" class="toc-link"><span class="toc-num">04</span>Reading Code Before Writing It</a>
+  </div>
+  <div class="toc-group">
+    <div class="toc-group-title">Python</div>
+    <a href="phase-2.html#ch05" class="toc-link"><span class="toc-num">05</span>Functions, Logic &amp; Control Flow</a>
+    <a href="phase-2.html#ch06" class="toc-link"><span class="toc-num">06</span>Data Structures</a>
+    <a href="phase-2.html#ch07" class="toc-link"><span class="toc-num">07</span>Files, Modules &amp; Standard Library</a>
+    <a href="phase-2.html#ch08" class="toc-link"><span class="toc-num">08</span>Error Handling, Debugging &amp; Testing</a>
+  </div>
+  <div class="toc-group">
+    <div class="toc-group-title">Real Software</div>
+    <a href="phase-3.html#ch09" class="toc-link"><span class="toc-num">09</span>The Terminal &amp; Shell Scripting</a>
+    <a href="phase-3.html#ch10" class="toc-link"><span class="toc-num">10</span>Version Control with Git</a>
+    <a href="phase-3.html#ch11" class="toc-link"><span class="toc-num">11</span>APIs, HTTP &amp; Software Communication</a>
+    <a href="phase-3.html#ch12" class="toc-link"><span class="toc-num">12</span>Project Architecture</a>
+  </div>
+  <div class="toc-group">
+    <div class="toc-group-title">Levels 1–5</div>
+    <a href="phase-4.html#ch13" class="toc-link"><span class="toc-num">13</span>Evaluating &amp; Directing AI Code</a>
+    <a href="phase-4.html#ch14" class="toc-link"><span class="toc-num">14</span>Levels 1 &amp; 2 — Tab Complete &amp; Agent IDE</a>
+    <a href="phase-4.html#ch15" class="toc-link"><span class="toc-num">15</span>Level 3 — Context Engineering</a>
+    <a href="phase-4.html#ch16" class="toc-link"><span class="toc-num">16</span>Level 4 — Compounding Engineering</a>
+    <a href="phase-4.html#ch17" class="toc-link"><span class="toc-num">17</span>Level 5 — MCP, Skills &amp; Capabilities</a>
+  </div>
+  <div class="toc-group">
+    <div class="toc-group-title">Levels 6–8</div>
+    <a href="phase-5.html#ch18" class="toc-link"><span class="toc-num">18</span>Level 6 — Harness Engineering</a>
+    <a href="phase-5.html#ch19" class="toc-link"><span class="toc-num">19</span>Level 7 — Background Agents</a>
+    <a href="phase-5.html#ch20" class="toc-link"><span class="toc-num">20</span>Level 8 — Autonomous Agent Teams</a>
+    <a href="phase-5.html#ch21" class="toc-link"><span class="toc-num">21</span>The Multiplayer Effect</a>
+  </div>
+  <div class="toc-group">
+    <div class="toc-group-title">Reference</div>
+    <a href="appendices.html#glossary" class="toc-link"><span class="toc-num">&oplus;</span>Glossary</a>
+    <a href="appendices.html#prompt-library" class="toc-link"><span class="toc-num">&oplus;</span>Prompt Library</a>
+    <a href="appendices.html#self-assessment" class="toc-link"><span class="toc-num">&oplus;</span>Self-Assessment</a>
+  </div>
+</aside>
+
+<div class="main">
+<section class="hero">
+  <!-- Terminal/code SVG silhouette -->
+  <svg class="hero-art" viewBox="0 0 520 320" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="var(--heading)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Terminal window -->
+    <rect x="40" y="20" width="440" height="280" rx="12" fill="var(--heading)"/>
+    <!-- Title bar -->
+    <rect x="40" y="20" width="440" height="36" rx="12" fill="var(--heading)"/>
+    <rect x="40" y="44" width="440" height="12" fill="var(--heading)"/>
+    <!-- Window buttons -->
+    <circle cx="68" cy="38" r="6" fill="var(--bg)" opacity=".3"/>
+    <circle cx="88" cy="38" r="6" fill="var(--bg)" opacity=".3"/>
+    <circle cx="108" cy="38" r="6" fill="var(--bg)" opacity=".3"/>
+    <!-- Terminal content lines -->
+    <rect x="65" y="75" width="120" height="8" rx="4" fill="var(--bg)" opacity=".15"/>
+    <rect x="65" y="100" width="200" height="8" rx="4" fill="var(--bg)" opacity=".1"/>
+    <rect x="65" y="125" width="160" height="8" rx="4" fill="var(--bg)" opacity=".12"/>
+    <rect x="65" y="150" width="260" height="8" rx="4" fill="var(--bg)" opacity=".08"/>
+    <rect x="65" y="175" width="100" height="8" rx="4" fill="var(--bg)" opacity=".1"/>
+    <rect x="65" y="200" width="180" height="8" rx="4" fill="var(--bg)" opacity=".12"/>
+    <!-- Cursor -->
+    <rect x="65" y="235" width="10" height="16" rx="2" fill="var(--bg)" opacity=".2"/>
+    <!-- Prompt chevron -->
+    <path d="M65,243 L75,243" stroke="var(--bg)" stroke-width="2" opacity=".25"/>
+  </svg>
+
+  <div class="hero-badge">Zero to Hero &mdash; Programming to Multi-Agent AI</div>
+  <h1>From Zero Code to <em>Orchestrating AI Agents</em></h1>
+  <p class="hero-sub">A complete, interactive reference that takes you from never having written a line of code to architecting multi-agent AI coding systems. Structured around the 8 Levels of Agentic Engineering.</p>
+  <div class="hero-meta"><span>21 chapters</span><span>5 phases</span><span>March 2026</span></div>
+</section>
+
+<div class="content-wrap">
+
+<h2 style="font-family:var(--serif);font-size:1.6rem;color:var(--heading);margin:2rem 0 1rem;font-weight:400">Choose Your Phase</h2>
+
+<a href="phase-1.html" class="phase-card">
+  <div class="phase-num">Phase 1</div>
+  <h3>What Is Code?</h3>
+  <p>Understand what code IS and how computers execute it — so you can read, evaluate, and direct AI-generated code.</p>
+  <div class="phase-chapters">Chapters 01–04 &middot; Foundations</div>
+</a>
+
+<a href="phase-2.html" class="phase-card">
+  <div class="phase-num">Phase 2</div>
+  <h3>Writing Python</h3>
+  <p>Working fluency in one language. Enough to read any function, understand control flow, and spot when something's wrong.</p>
+  <div class="phase-chapters">Chapters 05–08 &middot; Python</div>
+</a>
+
+<a href="phase-3.html" class="phase-card">
+  <div class="phase-num">Phase 3</div>
+  <h3>Building Real Software</h3>
+  <p>Files, modules, APIs, version control. The vocabulary of professional codebases that Claude Code operates in.</p>
+  <div class="phase-chapters">Chapters 09–12 &middot; Real Software</div>
+</a>
+
+<a href="phase-4.html" class="phase-card">
+  <div class="phase-num">Phase 4</div>
+  <h3>Levels 1–5 of Agentic Engineering</h3>
+  <p>From evaluating AI output to custom skills and MCPs. The progression from "I can judge AI code" to "the AI has capabilities I've given it."</p>
+  <div class="phase-chapters">Chapters 13–17 &middot; Levels 1–5</div>
+</a>
+
+<a href="phase-5.html" class="phase-card">
+  <div class="phase-num">Phase 5</div>
+  <h3>Levels 6–8 of Agentic Engineering</h3>
+  <p>From harness engineering to autonomous agent teams. Return to this as your projects grow in complexity.</p>
+  <div class="phase-chapters">Chapters 18–21 &middot; Levels 6–8</div>
+</a>
+
+<a href="appendices.html" class="phase-card">
+  <div class="phase-num">Reference</div>
+  <h3>Appendices</h3>
+  <p>Glossary, prompt library, and self-assessment quiz. Everything collected in one place.</p>
+  <div class="phase-chapters">Glossary &middot; Prompt Library &middot; Self-Assessment</div>
+</a>
+
+<div class="pq" style="margin:3rem 0">
+Every chapter in Phases 1–3 exists to make Phases 4–5 possible. You need to understand functions because when Claude Code generates a 200-line function, you need to know whether it's doing what you asked.
+</div>
+
+</div>
+</div>
+
+<footer>
+<p>Zero to Hero: Programming to Multi-Agent Claude Code &middot; March 2026</p>
+<p style="margin-top:.4rem;opacity:.5">Structured around the <a href="https://www.bassimeledath.com/blog/levels-of-agentic-engineering" target="_blank">8 Levels of Agentic Engineering</a> by Bassim Eledath.</p>
+</footer>
+
+<script src="js/theme.js"></script>
+<script src="js/sidebar.js"></script>
+<script src="js/shared.js"></script>
+</body>
+</html>

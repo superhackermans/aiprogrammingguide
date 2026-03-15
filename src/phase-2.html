@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Phase 2: Writing Python — Zero to Hero</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/design-system.css">
+</head>
+<body>
+
+<!-- SVG Arrow Defs -->
+<svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0"><defs>
+<marker id="arrowhead" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6" fill="var(--accent)"/></marker>
+<marker id="arrowhead-muted" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6" fill="var(--a5)"/></marker>
+</defs></svg>
+
+<button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+<div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+<button class="toggle" id="themeToggle" aria-label="Toggle theme">
+<svg class="is" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+<svg class="im" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+</button>
+
+<!-- SIDEBAR — identical across all files -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-logo"><span>Zero to Hero</span>Programming &rarr; Multi-Agent AI</div>
+  <div class="toc-group">
+    <div class="toc-group-title">Foundations</div>
+    <a href="phase-1.html#ch01" class="toc-link"><span class="toc-num">01</span>What Programming Actually Is</a>
+    <a href="phase-1.html#ch02" class="toc-link"><span class="toc-num">02</span>How Computers Execute Code</a>
+    <a href="phase-1.html#ch03" class="toc-link"><span class="toc-num">03</span>Setting Up Your Environment</a>
+    <a href="phase-1.html#ch04" class="toc-link"><span class="toc-num">04</span>Reading Code Before Writing It</a>
+  </div>
+  <div class="toc-group">
+    <div class="toc-group-title">Python</div>
+    <a href="#ch05" class="toc-link"><span class="toc-num">05</span>Functions, Logic &amp; Control Flow</a>
+    <a href="#ch06" class="toc-link"><span class="toc-num">06</span>Data Structures</a>
+    <a href="#ch07" class="toc-link"><span class="toc-num">07</span>Files, Modules &amp; Standard Library</a>
+    <a href="#ch08" class="toc-link"><span class="toc-num">08</span>Error Handling, Debugging &amp; Testing</a>
+  </div>
+  <div class="toc-group">
+    <div class="toc-group-title">Real Software</div>
+    <a href="phase-3.html#ch09" class="toc-link"><span class="toc-num">09</span>The Terminal &amp; Shell Scripting</a>
+    <a href="phase-3.html#ch10" class="toc-link"><span class="toc-num">10</span>Version Control with Git</a>
+    <a href="phase-3.html#ch11" class="toc-link"><span class="toc-num">11</span>APIs, HTTP &amp; Software Communication</a>
+    <a href="phase-3.html#ch12" class="toc-link"><span class="toc-num">12</span>Project Architecture</a>
+  </div>
+  <div class="toc-group">
+    <div class="toc-group-title">Levels 1–5</div>
+    <a href="phase-4.html#ch13" class="toc-link"><span class="toc-num">13</span>Evaluating &amp; Directing AI Code</a>
+    <a href="phase-4.html#ch14" class="toc-link"><span class="toc-num">14</span>Levels 1 &amp; 2 — Tab Complete &amp; Agent IDE</a>
+    <a href="phase-4.html#ch15" class="toc-link"><span class="toc-num">15</span>Level 3 — Context Engineering</a>
+    <a href="phase-4.html#ch16" class="toc-link"><span class="toc-num">16</span>Level 4 — Compounding Engineering</a>
+    <a href="phase-4.html#ch17" class="toc-link"><span class="toc-num">17</span>Level 5 — MCP, Skills &amp; Capabilities</a>
+  </div>
+  <div class="toc-group">
+    <div class="toc-group-title">Levels 6–8</div>
+    <a href="phase-5.html#ch18" class="toc-link"><span class="toc-num">18</span>Level 6 — Harness Engineering</a>
+    <a href="phase-5.html#ch19" class="toc-link"><span class="toc-num">19</span>Level 7 — Background Agents</a>
+    <a href="phase-5.html#ch20" class="toc-link"><span class="toc-num">20</span>Level 8 — Autonomous Agent Teams</a>
+    <a href="phase-5.html#ch21" class="toc-link"><span class="toc-num">21</span>The Multiplayer Effect</a>
+  </div>
+  <div class="toc-group">
+    <div class="toc-group-title">Reference</div>
+    <a href="appendices.html#glossary" class="toc-link"><span class="toc-num">&oplus;</span>Glossary</a>
+    <a href="appendices.html#prompt-library" class="toc-link"><span class="toc-num">&oplus;</span>Prompt Library</a>
+    <a href="appendices.html#self-assessment" class="toc-link"><span class="toc-num">&oplus;</span>Self-Assessment</a>
+  </div>
+</aside>
+
+<div class="main">
+<section class="hero" style="min-height:40vh">
+  <div class="hero-badge">Phase 2 &mdash; Python</div>
+  <h1>Writing <em>Python</em></h1>
+  <p class="hero-sub">By the end of Phase 2, you can write a function with tests and debug when it fails. See the Phase 2 Gate for the exact test.</p>
+  <div class="hero-meta"><span>Chapters 05–08</span><span>Phase Gate + TaskForge</span></div>
+</section>
+
+<div class="content-wrap">
+
+<!-- ===== CH 05 ===== -->
+<section id="ch05" data-ch="05">
+<h2><span class="ch-label">Chapter 05</span>Functions, Logic, and Control Flow</h2>
+<p><em>Content will be built during Phase B.</em></p>
+</section>
+
+<!-- ===== CH 06 ===== -->
+<section id="ch06" data-ch="06">
+<h2><span class="ch-label">Chapter 06</span>Data Structures &mdash; Lists, Dicts, and How Data Lives</h2>
+<p><em>Content will be built during Phase B.</em></p>
+</section>
+
+<!-- ===== CH 07 ===== -->
+<section id="ch07" data-ch="07">
+<h2><span class="ch-label">Chapter 07</span>Files, Modules, and the Standard Library</h2>
+<p><em>Content will be built during Phase B.</em></p>
+</section>
+
+<!-- ===== CH 08 ===== -->
+<section id="ch08" data-ch="08">
+<h2><span class="ch-label">Chapter 08</span>Error Handling, Debugging, and Testing</h2>
+<p><em>Content will be built during Phase B.</em></p>
+</section>
+
+<!-- ===== PHASE 2 GATE ===== -->
+<section id="gate2">
+<h2><span class="ch-label">Phase 2 Gate</span>Checkpoint &amp; TaskForge Extension</h2>
+<p><em>Content will be built after all Phase 2 chapters.</em></p>
+</section>
+
+</div>
+</div>
+
+<footer>
+<p>Zero to Hero: Programming to Multi-Agent Claude Code &middot; March 2026</p>
+<p style="margin-top:.4rem;opacity:.5">Structured around the <a href="https://www.bassimeledath.com/blog/levels-of-agentic-engineering" target="_blank">8 Levels of Agentic Engineering</a> by Bassim Eledath.</p>
+</footer>
+
+<script src="js/theme.js"></script>
+<script src="js/sidebar.js"></script>
+<script src="js/shared.js"></script>
+</body>
+</html>
