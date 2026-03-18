@@ -119,7 +119,7 @@ pre code{background:none;padding:0}
 .pb2 p{font-size:.9rem;color:var(--text-muted);margin-bottom:0;line-height:1.6}
 
 /* === BLOCKQUOTE (.pq) === */
-.pq{border-left:3px solid var(--a2);padding:.9rem 0 .9rem 1.4rem;margin:1.8rem 0;font-family:var(--serif);font-size:1.2rem;color:var(--text-bright);font-style:italic;line-height:1.55}
+.pq{border-left:3px solid var(--a2);padding:.9rem 0 .9rem 1.4rem;margin:1.8rem 0;font-family:var(--sans);font-size:1.05rem;color:var(--text-bright);font-style:normal;line-height:1.7}
 .pqa{font-family:var(--sans);font-size:.82rem;font-style:normal;color:var(--text-muted);margin-top:.4rem}
 
 /* === CALLOUTS === */
