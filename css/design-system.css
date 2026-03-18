@@ -8,6 +8,9 @@
 
 /* === RESET === */
 *{margin:0;padding:0;box-sizing:border-box}
+a{color:inherit;text-decoration:none}
+section a,p a,.callout a,.exercise a{color:var(--accent);text-decoration:none}
+section a:hover,p a:hover,.callout a:hover,.exercise a:hover{text-decoration:underline}
 html{scroll-behavior:smooth;scroll-padding-top:2rem}
 html,html *{transition:background-color .3s,color .3s,border-color .3s}
 body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.78;font-size:17px;-webkit-font-smoothing:antialiased}
