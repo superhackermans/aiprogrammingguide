@@ -2,8 +2,8 @@
 
 ## Project Overview
 Building a multi-file HTML reference document: "Zero to Hero — Programming to Multi-Agent Claude Code."
-21 chapters across 5 phases, with a phase gate after each phase and appendices. Structured around the 8 Levels of Agentic Engineering.
-Multi-file architecture: one landing page + one HTML file per phase + shared CSS/JS.
+47 chapters across 10 phases, with a phase gate after each phase and appendices.
+Multi-file architecture: one landing page + one HTML file per phase (10 files) + shared CSS/JS.
 
 ## Key Commands
 - View progress: `cat docs/PROGRESS.md`
@@ -22,58 +22,39 @@ Multi-file architecture: one landing page + one HTML file per phase + shared CSS
 7. Commit after each completed chapter: "ch[XX]: [title]"
 8. Each phase file must be independently viewable (no broken state in isolation)
 9. Every chapter must reference the TaskForge project at least once — as an example, code snippet, exercise, or conceptual explanation. This ensures the spine project compounds throughout, not only at phase gates.
-10. All CSS must live ONLY in `src/css/design-system.css`. No inline styles except inside SVG diagrams. All shared JS must live in `src/js/theme.js`, `src/js/sidebar.js`, or `src/js/shared.js`. Phase files may NOT define additional global CSS or JS.
+10. All CSS must live ONLY in `src/css/design-system.css`. No inline styles except inside SVG diagrams. Shared JS lives in `src/js/` — core files: `theme.js`, `sidebar.js`, `shared.js`. Interactive platform files: `progress.js`, `ace-init.js`, `pyodide-runner.js`, `quiz.js`, `exercise-runner.js`. Phase files may NOT define additional global CSS or JS.
 11. The sidebar navigation must be generated from a single shared HTML snippet copied identically into each phase file. The sidebar must include: all phases, all chapters, appendices, and current-chapter highlighting. No phase file may omit sidebar entries for other phases.
+12. New chapters follow the exact same template as existing chapters
+13. All images and diagrams must have descriptive alt text or aria-label
+14. Interactive elements must be keyboard navigable
+15. Color contrast must meet WCAG 2.1 AA (4.5:1 for text, 3:1 for large text)
+16. Phase files have no hard line limit; keep content comprehensive but focused
+17. SVG diagrams should use design system CSS variables, not inline styles
+18. Consider diagram count per page - more than 8 diagrams may impact load time
 
 ## Generation Scope Control
 
-Never generate the entire project in one response. Work units are limited to:
-- Infrastructure setup (Phase A)
-- One chapter
-- One phase gate
-
-After completing a work unit:
-1. Update PROGRESS.md
-2. Run QA checklists
-3. Output build status (see Status Report Format below)
-4. Stop generation. Wait for confirmation before next work unit.
-
-## File Output Format
-
-Every generated file must be complete. Output format:
-
-```
-FILE: path/to/file
-```
-```language
-(full file contents)
-```
-
-Partial file fragments are not allowed. Never output a file as "the same as before but with X changed." Always output the complete file.
+Build continuously. No stopping between work units.
 
 ## Failure Protocol
 
-If any step cannot be executed:
-1. Stop generation immediately.
-2. Report the blocking issue with the exact error or constraint.
-3. Suggest the minimal fix.
-4. Wait for confirmation before continuing.
-
-Do not attempt workarounds without confirmation. Do not skip steps.
+If any step cannot be executed, use best judgment and continue. Log the issue in DECISIONS.md.
 
 ## Dependency Policy
 
 Only the following libraries are allowed:
 
-**Python:** Flask, requests, pytest
+**Python:** Flask, requests, pytest, sqlite3 (stdlib)
 **Frontend:** HTML, CSS (design-system.css only), vanilla JavaScript
+**Frontend CDN:** Ace Editor (cdn.jsdelivr.net/npm/ace-builds), Pyodide (cdn.jsdelivr.net/pyodide)
+**Infrastructure:** Docker
 
 No other dependencies. If another dependency appears necessary, the builder must flag it and wait for approval instead of adding it. This prevents hallucinated package names and unnecessary complexity.
 
 ## Code Style
 - HTML: semantic, accessible, no frameworks
 - CSS: design system custom properties only, no external frameworks
-- JS: vanilla only, no build tools, no dependencies
+- JS: vanilla IIFE pattern (ES5), no build tools. CDN deps: Ace Editor, Pyodide (lazy-loaded)
 - SVG: inline, design system classes (node-fill, node-accent, label-text, sub-text, arrow)
 
 ## Design System Lock
@@ -84,12 +65,14 @@ The file `src/css/design-system.css` is **immutable after initial extraction**. 
 - Never introduce CSS frameworks (Tailwind, Bootstrap, etc.)
 - Never introduce JS frameworks (React, Vue, etc.)
 
+Exception: utility classes may be added per Decision D005.
+
 Allowed technologies: HTML, the existing CSS design system, vanilla JavaScript. Nothing else.
 
 ## Quality Bar
 - Every diagram teaches one non-obvious concept (decorative diagrams not permitted)
 - Every "Try This Now" is copy-paste-ready with verification AND troubleshooting
-- Every chapter has at least 1 diagram and 1 exercise
+- Every chapter has at least 1 diagram, 1 static exercise, and 1 interactive exercise (Pyodide, quiz, or checklist)
 - Maximum 5 new technical terms per chapter
 - No forward references (no concept used before introduced)
 - Mobile responsive at 700px and 900px

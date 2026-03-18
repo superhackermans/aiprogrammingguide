@@ -1,4 +1,7 @@
 # Quality Assurance Checklist
+
+> **Status: OBSOLETE** — This checklist has been superseded by the audit round process. See `AUDIT-ROUND-1.md` through `AUDIT-ROUND-5.md` for detailed findings and resolutions covering phases 1-6. The final audit score was **9.6/10**. Phases 7-10 (Ch 28-47) have not yet been audited. The checklist template below is retained as a reference for future audit rounds.
+
 Apply BOTH sections to every chapter before marking complete.
 
 ## A. Rendering QA

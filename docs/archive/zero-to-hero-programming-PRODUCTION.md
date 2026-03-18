@@ -1,5 +1,7 @@
-# Zero to Hero: Programming to Multi-Agent Claude Code
+# [ARCHIVED] Zero to Hero: Programming to Multi-Agent Claude Code
 ## Final Build Instructions (Validated, All Upgrades Applied)
+
+> **DEPRECATED:** This is the earliest build specification (21 chapters / 5 phases). The project has since been expanded to 47 chapters / 10 phases. This file is retained for historical reference only. See `CLAUDE.md` in the project root for current build instructions.
 
 > **What this is:** Complete, validated instructions to hand to an LLM (with the FUSO HMI HTML file as a design reference) to build a comprehensive, interactive HTML reference document that takes a complete beginner from zero programming knowledge to orchestrating multi-agent AI coding systems — structured around the 8 Levels of Agentic Engineering framework.
 >
