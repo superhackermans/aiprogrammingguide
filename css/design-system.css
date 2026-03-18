@@ -1,6 +1,6 @@
 /* Design System — Zero to Hero: Programming to Multi-Agent Claude Code
    Extracted from FUSO HMI Expert Reference. Adapted for programming context.
-   IMMUTABLE after Phase A infrastructure is complete. */
+   v2.1 — anchor reset, sidebar-logo link fix */
 
 /* === THEME VARIABLES === */
 :root{--bg:#0a0c12;--bg-card:#10131c;--border:#1a1f30;--border-accent:#252d45;--text:#b8bfce;--text-muted:#5e6880;--text-bright:#dce1ec;--heading:#eef1f8;--accent:#4a90e2;--accent-glow:rgba(74,144,226,.1);--a2:#7c6dd8;--a3:#2ebd80;--a4:#e8943a;--a5:#e05c7a;--code-bg:#141825;--serif:'Instrument Serif',Georgia,serif;--sans:'DM Sans',-apple-system,sans-serif;--mono:'JetBrains Mono',monospace;--df:#141a28;--dl:#2a3350;--sidebar-w:260px}
